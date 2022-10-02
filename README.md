@@ -2,7 +2,7 @@
 ## Guidelines for contributions
 
 
-Disclaimer:: Do Star ⭐ this Repo then Fork🍴
+### Do Star ⭐ this Repo then Fork🍴
 
 
 ## Rules:
