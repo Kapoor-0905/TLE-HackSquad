@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Insertion {
@@ -23,14 +24,15 @@ public class Insertion {
         }
         return ar;
     }
-
+    // A better way of printing arrays can be done using Arrays.toString(<Array>)
+    /*
     public static void displayArray(int[] ar){
         for(int x=0; x<ar.length; x++){
             System.out.print(ar[x] + "\t");
         }
         System.out.println();
     }
-
+    */
     public static int[] insertionSort(int[] ar, boolean reverse){
         int[] sortedAr = new int[ar.length];
         if(!reverse) {
@@ -60,11 +62,14 @@ public class Insertion {
 
     public static void main(String[] args){
         int[] ar = getArray();
-        displayArray(ar);
-        System.out.println("\nSorted Arrays: ");
-        System.out.print("Sorted Array:\t");
-        displayArray(insertionSort(ar, false));
+        // displayArray(ar);
+        System.out.println("\nInitial Array:\t\t"+Arrays.toString(ar));
+        System.out.println("\nSorted Arrays:\n");
+        System.out.print("Sorted Array:\t\t");
+        // displayArray(insertionSort(ar, false));
+        System.out.println(Arrays.toString(insertionSort(ar,false)));
         System.out.print("Reverse Sorted Array:\t");
-        displayArray(insertionSort(ar, true));
+        // displayArray(insertionSort(ar, true));
+        System.out.println(Arrays.toString(insertionSort(ar,true)));
     }
 }
