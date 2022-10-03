@@ -1,3 +1,6 @@
+from cv2 import resize
+
+
 class RomanNumerals:
     def to_roman(val):
         num = []
@@ -35,4 +38,39 @@ class RomanNumerals:
         
         return ''.join(num)
         
-print(RomanNumerals.to_roman(90))
+    def from_roman(string):
+        result = 0
+        for i in range(0,len(string)):
+            if (string[i] == "I"):
+                if(i<len(string)-1):
+                    if(string[i+1] == "V" or string[i+1] == "X"):
+                        result = result - 1
+                else:
+                    result = result + 1
+
+            if (string[i] == 'X'):
+                if(i<len(string)-1):
+                    if(string[i+1] == 'L' or string[i+1] == "C"):
+                        result = result - 10
+                else:
+                    result = result + 10
+
+            if (string[i] == "C"):
+                if(i<len(string)-1):
+                    if(string[i+1] == "D" or string[i+1] == "M"):
+                        result = result - 100
+                else:
+                    result = result + 100
+            if(string[i] == "M"):
+                result = result + 1000
+            if(string[i] == "D"):
+                result = result + 500
+            if(string[i] == "L"):
+                result = result + 50
+
+                
+        return result
+                
+
+print(RomanNumerals.from_roman("MCMXC"))
+#print(RomanNumerals.from_roman('MCMXC'))
