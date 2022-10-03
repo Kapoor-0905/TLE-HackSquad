@@ -1,4 +1,7 @@
-#Add your problems solution programmed in any language. 
+<div  align=center>
+  <img src=https://blog.tooljet.com/content/images/2022/09/Screenshot-2022-09-27-at-08.03.21.png width=70%>
+</div>
+
 ## Guidelines for contributions
 
 
@@ -21,3 +24,7 @@
 
 
 This is a good project for beginners to get some hands-on experience
+
+## Contributors
+
+![GitHub Contributors Image](https://contrib.rocks/image?repo=Kapoor-0905/Hacktoberfest-2022)
