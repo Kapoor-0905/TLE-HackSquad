@@ -1,14 +1,11 @@
-##### The two sum problem is a version of the subset sum problem and is a common programming question. Although there is a popular dynamic programming solution for the subset sum problem, we can construct an O(n) time approach for the two sum problem. The goal is to identify all the pairs of two numbers that add up to a certain “S” in an unsorted array. This article is about a famous coding task frequently asked in Python interviews.
-- def twosumprob(my_arr,t_sum):
--    my_arr.sort()
--    l_pointer=0
- -   r_pointer=len(my_arr)-1
- -   while l_pointer < r_pointer:
- -       c_sum=my_arr[l_pointer]+my_arr[r_pointer]
-  -      if c_sum==t_sum:
-  -          return(my_arr[l_pointer],my_arr[r_pointer])
-  -      elif c_sum<t_sum:
-  -          l_pointer+=1
- -       else:
- -           r_pointer-=1
--    return[]
+##### The two sum problem is a version of the subset sum problem and is a common programming question. 
+
+
+- class Solution(object):
+- def twoSum(self, nums, target):
+
+
+-  for i in nums:
+-     num1 = target - i
+-     if num1 in nums[nums.index(i)+1::]:
+-         return [nums.index(i), nums.index(num1,nums.index(i)+1,len(nums))]
