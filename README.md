@@ -25,6 +25,4 @@
 
 This is a good project for beginners to get some hands-on experience
 
-## Contributors
 
-![GitHub Contributors Image](https://contrib.rocks/image?repo=Kapoor-0905/Hacktoberfest-2022)
