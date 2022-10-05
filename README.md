@@ -2,6 +2,9 @@
   <img src=https://blog.tooljet.com/content/images/2022/09/Screenshot-2022-09-27-at-08.03.21.png width=70%>
 </div>-->
 
+```
+This repository is not the part of Hacktoberfest-2022. Those who want to contribute to open source can continue. 
+```
 ## Guidelines for contributions
 
 
