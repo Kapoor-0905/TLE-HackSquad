@@ -17,7 +17,6 @@ void push(Node** head_ref, int new_data)
 
 void insertmid(Node* prev_node, int new_data)
 {
-
     if (prev_node == NULL) {
         cout << "The given previous node cannot be NULL";
         return;
