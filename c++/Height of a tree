@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void dfs(vector<vector<int>> &tree, vector<int> &height, int vertex, int parent)
+{
+  for (auto child : tree[vertex])
+  {
+    if (child == parent)
+    {
+      continue;
+    }
+    dfs(tree, height, child, vertex);
+    // height of a node is calculated after calling dfs of while going up in the tree or backtracking 
+    // height of a node is max height of its children + 1 and its current height
+    height[vertex] = max(height[vertex], height[child] + 1);
+  }
+}
+
+int main()
+{
+  ios_base::sync_with_stdio(false);
+  cin.tie(0);
+  cout.tie(0);
+  int n;
+  cin >> n;
+  vector<vector<int>> tree(n + 1);
+  for (int i = 1; i < n; i++)
+  {
+    int x, y;
+    cin >> x >> y;
+    // taking input of tree in vector of vector
+    tree[x].push_back(y);
+    tree[y].push_back(x);
+  }
+  vector<int> height(n + 1, 0);  // height of each node
+  dfs(tree, height, 1, 0);
+  int maxheight = 0;
+  for (int i = 0; i < n; i++)
+  {
+    maxheight = max(maxheight, height[i]);
+  }
+  cout << maxheight;
+}
