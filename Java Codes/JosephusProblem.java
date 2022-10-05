@@ -1,38 +1,45 @@
+import java.util.*;
 
-/**
- * Josephus Problem is described as follows:
- * Suppose there are n people sitting in a circle numbered 1 to n
- * We start from 1 intially and kill every kth person and then we repeat this
- * process from the person next to the one killed
- * we do this until there is only 1 person left in the circle.
- * in the end we are required to return the intial position x such that person
- * sitting on the xth position in the beginning is the one that survives till
- * the end
- * 
- */
+class josephusproblem{
 
-public class JosephusProblem {
 
-    public static void main(String[] args) {
-        // intially pass n: number of persons sitting in the person , and k: (such that
-        // kth person is killed in every turn)
-        System.out.println(josephus(7, 4));
-    }
+static void Josh(List<Integer> person, int k, int index)
+{
+	
+	// Base case , when only one person is left
+	if (person.size() == 1) {
+	System.out.println(person.get(0));
+	return;
+	}
 
-    private static int josephus(int n, int k) {
-        // returns the reequired position
-        if (n == 1)
-            return 0;
+	// find the index of first person which will die
+	index = ((index + k) % person.size());
 
-        int death = (k - 1) % n;
+	// remove the first person which is going to be killed
+	person.remove(index);
 
-        int nextStart = (death + 1) % n;
-
-        int ans = josephus(n - 1, k);
-
-        int res = (nextStart + ans) % n;
-
-        return res;
-    }
-
+	// recursive call for n-1 persons
+	Josh(person, k, index);
 }
+
+// Driver code
+public static void main(String [] args)
+{
+	int n = 14; // specific n and k values for original
+	// josephus problem
+	int k = 2;
+	k--; // (k-1)th person will be killed
+	int index
+	= 0; // The index where the person which will die
+
+	List<Integer> person = new ArrayList<>();
+	
+	// fill the person vector
+	for (int i = 1; i <= n; i++) {
+	person.add(i);
+	}
+
+	Josh(person, k, index);
+}
+}
+
