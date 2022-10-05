@@ -2,9 +2,10 @@
   <img src=https://blog.tooljet.com/content/images/2022/09/Screenshot-2022-09-27-at-08.03.21.png width=70%>
 </div>-->
 
-```
-This repository is not the part of Hacktoberfest-2022. Those who want to contribute to open source can continue. 
-```
+> This repository is not the part of Hacktoberfest-2022. Those who want to contribute to open source can continue.
+
+
+ 
 ## Guidelines for contributions
 
 
@@ -26,6 +27,7 @@ This repository is not the part of Hacktoberfest-2022. Those who want to contrib
 - Add a meaningful message to the PR’s and also mention the solved issue topic
 
 
-This is a good project for beginners to get some hands-on experience
 
+
+This is a good project for beginners to get some hands-on experience
 
