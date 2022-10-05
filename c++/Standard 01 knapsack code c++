@@ -1,0 +1,50 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+// standard 0/1 knapsack problem where you have to find out the maximum value subset of value[] such that sum of the weights of this subset is smaller than or equal to maxweight
+
+
+int knapSack(int maxweight, int wt[], int value[], int n)
+{
+  int i, w;
+  vector<vector<int>> dp(n + 1, vector<int>(maxweight + 1));
+
+  // Build table dp[][] in bottom up manner
+  for (i = 0; i <= n; i++)
+  {
+    for (w = 0; w <= maxweight; w++)
+    {
+      // Base Case
+      if (i == 0 || w == 0)
+        dp[i][w] = 0;
+      else if (wt[i - 1] <= w)
+      // if the weight of the item is less than the current weight, then we can either include it or not include it
+        dp[i][w] = max(value[i - 1] +  dp[i - 1][w - wt[i - 1]],dp[i - 1][w]);
+      else
+      // if the weight of the item is greater than the current weight, then we cannot include it
+        dp[i][w] = dp[i - 1][w];
+    }
+  }
+  // return the last element of the dp matrix
+  return dp[n][maxweight];
+}
+
+int main()
+{
+  ios_base::sync_with_stdio(false);
+  cin.tie(0);
+  cout.tie(0);
+  int n , maxweight;
+  cin >> n >> maxweight;
+  int wt[n], value[n];
+  for(int i = 0 ; i < n ;i++)
+  {
+    cin>>wt[i];
+  }
+  for(int i = 0 ; i < n ;i++)
+  {
+    cin>>value[i];
+  }
+  cout << knapSack(maxweight, wt, value, n);
+}
