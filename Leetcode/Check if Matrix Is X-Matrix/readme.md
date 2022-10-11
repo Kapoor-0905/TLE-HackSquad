@@ -1,0 +1,1 @@
+Link to the problem:https://leetcode.com/problems/check-if-matrix-is-x-matrix/
