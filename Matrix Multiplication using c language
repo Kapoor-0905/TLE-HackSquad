@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void main ()
+{
+
+  int row, column, i, j;
+  printf ("Please enter how many rows and columns you want to enter:");
+  scanf ("%d", &row);
+  scanf ("%d", &column);
+  printf ("enter the requried matrix:");
+
+
+  int a[row][column], b[row][column], ab[row][column], ba[row][column];
+  int sum1 = 0, sum2 = 0;
+
+
+
+
+
+      for (i = 0; i < row; i++)
+        {
+          for (j = 0; j < column; j++)
+    	{
+    	  scanf ("%d", &a[i][j]);
+    	}
+    }
+
+  for (i = 0; i < row; i++)
+    {
+      for (j = 0; j < column; j++)
+	{
+	  scanf("%d", &b[i][j]);
+	}
+    }
+
+
+  for (int i = 0; i < row; i++)
+    {
+      for (int j = 0; j < column; j++)
+	{
+	  ab[i][j] = a[i][j] - b[i][j];
+	  ba[i][j] = b[i][j] - a[i][j];
+	}
+    }
+
+      for (int i = 0; i < row; i++)
+	{
+	  for (int j = 0; j < column; j++)
+	    {
+	      sum1 += ab[i][j];
+	      sum2 += ba[i][j];
+	    }
+	}
+      if (sum1 == sum2)
+	printf ("they are equal");
+      else if (sum1 > sum2)
+	printf ("GREATER");
+      else
+	printf ("LESS");
+    }
