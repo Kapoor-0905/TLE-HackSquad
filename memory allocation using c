@@ -1,0 +1,32 @@
+#include <stdio.h>
+#define MAX[20]
+void main()
+{
+    int bsize[MAX],blocks,psize[max], process,
+    for(int i=0; i<MAX;i++)
+    {
+        flag[i]= 0;
+        allocation[i]= -1;
+        
+    }
+    printf("Enter the number of blocks : ");
+    scanf("%d",&blocks);
+    printf("enter the ize of each block: ");
+    for(int i=0,i <blocks; i++)
+    {
+        scanf("%d",&bsize[i]);
+    }
+    printf("\nEnter number of process: ");
+    scanf("%d", &process);
+    printf("\n Enter the size of each process: ");
+    for(int i=0;i<process;i++)
+    {
+        scanf("%d",&psize[i]);
+    }
+    
+    for (i = 0 ;i <psize[i] )
+    {
+        
+    }
+    
+}
