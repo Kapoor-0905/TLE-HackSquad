@@ -1,0 +1,42 @@
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+from sklearn.datasets import make_blobs
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split
+from pandas.plotting import parallel_coordinates
+from sklearn.metrics import confusion_matrix, accuracy_score
+from sklearn.model_selection import cross_val_score
+
+
+df = pd.read_csv("D:\sem3\Intro to AI\Iris.csv")
+# import the csv file or any other file you want to compute the dataset from the location 
+
+df.head(5)
+df.describe()
+
+df.groupby('Species').size()
+
+X = df.iloc[:, 1:5].values
+y = df.iloc[:, 5].values
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+
+plt.figure(figsize=(15,10))
+parallel_coordinates(df.drop("Id", axis=1), "Species")
+plt.title('Parallel Coordinates Plot', fontsize=20, fontweight='bold')
+plt.xlabel('Features', fontsize=15)
+plt.ylabel('Features values', fontsize=15)
+plt.legend(loc=1, prop={'size': 15}, frameon=True,shadow=True, facecolor="white", edgecolor="black")
+plt.show()
+
+classifier = KNeighborsClassifier(n_neighbors=5)
+
+classifier.fit(X_train, y_train)
+y_pred = classifier.predict(X_test)
+cm = confusion_matrix(y_test, y_pred)
+
+
+accuracy = accuracy_score(y_test, y_pred)*100
+print('Accuracy of the model is equal ' + str(round(accuracy, 2)) + ' %.')
