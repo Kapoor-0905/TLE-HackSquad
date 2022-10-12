@@ -1,0 +1,162 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct Node{
+    int coeff, degree;
+    struct Node *next;
+}*head1, *head2, *headr;
+
+void display(struct Node* ptr){
+    if(ptr==NULL){
+        printf("List is empty");
+    }
+    else{
+        printf("Polynomial:\t");
+        printf("%d x^%d\t",ptr->coeff, ptr->degree);
+        ptr = ptr->next;
+        while(ptr!=NULL){
+            printf("+\t%d x^%d\t",ptr->coeff, ptr->degree);
+            ptr = ptr->next;
+        }
+    }
+}
+
+
+void list1(int m, int n){
+    struct Node *newNode, *temp;
+    newNode = (struct Node*) malloc(sizeof(struct Node));
+    if(head1 == NULL){
+        newNode->coeff = m;
+        newNode->degree = n;
+        newNode->next = head1;
+        head1 = newNode;
+    }
+    else{
+        newNode->coeff = m;
+        newNode->degree = n;
+        newNode->next = NULL;
+        temp=head1;
+        while(temp!=NULL && temp->next!=NULL){
+            temp = temp->next;
+        }
+        temp->next= newNode;
+    }
+}
+
+void eqn1(char ch[]){
+    int coeff, degree;
+    coeff = degree = -1;
+    for(int x=0; x<20; x++){
+        if(ch[x]!='\0'){
+            if(ch[x]>=48 && ch[x]<=57 && (ch[x+1]=='x')){
+                coeff = (int)ch[x]-48;
+            }
+            if(ch[x-1]=='x' && ch[x]>=48 && ch[x]<=57){
+                degree = (int)ch[x]-48;
+            }
+            if(coeff!=-1 && degree!=-1){
+                list1(coeff, degree);
+                coeff = degree = -1;
+            }
+        }
+        else{
+            break;
+        }
+    }
+}
+
+void list2(int m, int n){
+    struct Node *newNode, *temp;
+    newNode = (struct Node*) malloc(sizeof(struct Node));
+    if(head2 == NULL){
+        newNode->coeff = m;
+        newNode->degree = n;
+        newNode->next = head2;
+        head2 = newNode;
+    }
+    else{
+        newNode->coeff = m;
+        newNode->degree = n;
+        newNode->next = NULL;
+        temp=head2;
+        while(temp!=NULL && temp->next!=NULL){
+            temp = temp->next;
+        }
+        temp->next= newNode;
+    }
+}
+
+void eqn2(char ch[]){
+    int coeff, degree;
+    coeff = degree = -1;
+    for(int x=0; x<20; x++){
+        if(ch[x]!='\0'){
+            if(ch[x]>=48 && ch[x]<=57 && (ch[x+1]=='x')){
+                coeff = (int)ch[x]-48;
+            }
+            if(ch[x-1]=='x' && ch[x]>=48 && ch[x]<=57){
+                degree = (int)ch[x]-48;
+            }
+            if(coeff!=-1 && degree!=-1){
+                list2(coeff, degree);
+                coeff = degree = -1;
+            }
+        }
+        else{
+            break;
+        }
+    }
+}
+
+void listr(int m, int n){
+    struct Node *newNode, *temp;
+    newNode = (struct Node*) malloc(sizeof(struct Node));
+    if(headr == NULL){
+        newNode->coeff = m;
+        newNode->degree = n;
+        newNode->next = headr;
+        headr = newNode;
+    }
+    else{
+        newNode->coeff = m;
+        newNode->degree = n;
+        newNode->next = NULL;
+        temp=headr;
+        while(temp!=NULL && temp->next!=NULL){
+            temp = temp->next;
+        }
+        temp->next= newNode;
+    }
+}
+
+void add(){
+    struct Node *ptr1, *ptr2;
+    ptr1 = head1;
+    ptr2 = head2;
+    while(ptr1 != NULL && ptr2 != NULL){
+        int coeff = ptr1->coeff + ptr2->coeff;
+        int degree = ptr1->degree;
+        listr(coeff, degree);
+        ptr1 = ptr1->next;
+        ptr2 = ptr2->next;
+    }
+}
+
+void main(){
+    head1 = head2 = headr = NULL;
+    char str1[20], str2[20];
+    printf("Enter polynomial 1: ");
+    gets(str1);
+    printf("Enter polynomial 2: ");
+    gets(str2);
+    eqn1(str1);
+    eqn2(str2);
+    printf("\n\nPolynomial 1:\t");
+    display(head1);
+    printf("\n\nPolynomial 2:\t");
+    display(head2);
+    printf("\n\nResultant Polynomial:\t");
+    add();
+    display(headr);
+}
