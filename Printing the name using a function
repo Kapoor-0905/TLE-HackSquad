@@ -1,0 +1,11 @@
+class Employee:
+    def __init__(self):
+        self.firstName = input("Enter First Name: ")
+        self.LastName = input("Enter last Name : ")
+        self.salary = int(input("Enter salary: "))
+
+    def mail(self):
+        return self.firstName.lower()+'.' +self.LastName.lower() + '@company.com'
+
+obj = Employee()
+print(obj.mail())
