@@ -1,0 +1,47 @@
+#include <stdio.h>
+
+struct fcfs
+{
+    int pid, arrival, burst, turnaround;
+};
+void main()
+{
+    int a, num,b;
+    float avg = 0, sum= 0;
+    struct fcfs p[10] , temp ;
+    printf("enter the total number of processes");
+    scanf("%d",&num );
+    for(a = 0; a< num ; a++)
+    {
+        printf("enter the arrival time and burst time for the process%d:",a+1);
+        scanf("%d %d",&p[a].arrival,&p[a].burst);
+        p[a].pid =a+1;
+    }
+    for(a+0; a<num-1; a++)
+        {
+            for (b=0;b<num-1;b++)
+            {
+                if(p[b].arrival>p[b+1].arrival)
+                    {
+                        temp = p[b];
+                        p[b]=p[b+1];
+                        p[b+1]=temp;
+                    }
+            }
+        }
+        for(a=0;a<num;a++)
+        {
+            sum = sum +p[a].burst;
+            p[a].turnaround = sum;
+        }
+        sum = 0;
+        printf("PID\tArrival\tBurst\tTurnaround\n");
+        for(a=0;a<num;a++)
+        {
+            printf("%d\t%d\t%d\n",p[a].arrival,p[a].burst,p[a].turnaround);
+            sum= sum+p[a].turnaround;
+        }
+        avg = sum/(float)num;
+        printf("\ntotal turnaround time: %f", sum);
+        printf("\naverage turnaround time: %f",avg);
+}
