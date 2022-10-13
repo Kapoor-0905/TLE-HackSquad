@@ -1,0 +1,15 @@
+class Account :
+    def __init__(self,initail_amount):
+        self.__balance = initail_amount
+    def withdraw(self,amount):
+        self.__balance= self.__balance - amount
+    def deposit(self,amount):
+        self.__balance = self.__balance + amount
+    def accBalance(self):
+        print(self.__balance)
+ac  = Account(1000)
+ac.balance = 2000
+ac.balance = -1000
+ac.deposit(2000)
+ac.accBalance()
+print(ac.balance)
